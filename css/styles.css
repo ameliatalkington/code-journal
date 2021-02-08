@@ -32,7 +32,7 @@ input,
 textarea {
   width: 100%;
   margin-bottom: 20px;
-  border: solid rgb(98, 98, 98) 1px;
+  border: solid rgba(98, 98, 98, 0.827) 1px;
   border-radius: 3px;
   background-color: rgba(211, 211, 211, 0.122);
   font-size: 15px;
@@ -44,4 +44,15 @@ input {
 
 textarea {
   height: 100px;
+}
+
+#submit {
+  width: 80px;
+  height: 35px;
+  background-color: lightskyblue;
+  border: none;
+  float: right;
+  color: rgb(81, 81, 81);
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
