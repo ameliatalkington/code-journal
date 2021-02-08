@@ -1,0 +1,47 @@
+header {
+  background-color: lightskyblue;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 13px;
+  font-family: 'Open Sans', sans-serif;
+  color: rgb(81, 81, 81);
+}
+
+.container {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: rgb(37, 37, 37);
+}
+
+.form-image {
+  width: auto;
+}
+
+img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 16px;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin-bottom: 20px;
+  border: solid rgb(98, 98, 98) 1px;
+  border-radius: 3px;
+  background-color: rgba(211, 211, 211, 0.122);
+  font-size: 15px;
+}
+
+input {
+  height: 40px;
+}
+
+textarea {
+  height: 100px;
+}
