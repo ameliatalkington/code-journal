@@ -10,12 +10,15 @@ $photoURL.addEventListener('input', function (event) {
   $displayedImage.setAttribute('src', event.target.value);
 });
 
-$form.addEventListener('submit', function(event) {
+$form.addEventListener('submit', function (event) {
   event.preventDefault();
   var newObject = {
     imageUrl: $displayedImage.getAttribute('src'),
     title: $title.value,
-    notes: $notes.value
+    notes: $notes.value,
+    nextEntryId: data.nextEntryId
   };
+  data.nextEntryId++;
+  data.entries.shift(newObject);
   $form.reset();
 });
