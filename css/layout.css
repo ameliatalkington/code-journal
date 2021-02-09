@@ -25,6 +25,10 @@
     max-width: 900px;
   }
 
+  .title {
+    padding-left: 2.2rem;
+  }
+
   .column-full,
   .column-half {
     padding: 0 0.75rem;
