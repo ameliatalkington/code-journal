@@ -14,6 +14,13 @@
   flex-wrap: wrap;
 }
 
+.column {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .column-full,
 .column-half {
   width: 100%;
@@ -37,6 +44,7 @@ ul {
     padding-left: 2.2rem;
   }
 
+  .column,
   .column-full,
   .column-half {
     padding: 0 0.75rem;

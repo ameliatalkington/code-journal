@@ -61,7 +61,8 @@ textarea {
   padding-top: 5px;
 }
 
-#submit {
+#submit,
+.new-button {
   padding: 0;
   color: black;
   width: 80px;
@@ -72,4 +73,9 @@ textarea {
   font-weight: 700;
   letter-spacing: 0.5px;
   font-size: 17px;
+  border-radius: 6px;
+}
+
+.new-button {
+  float: none;
 }
