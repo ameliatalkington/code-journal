@@ -20,10 +20,13 @@
   <header>
     <div class="title">
       <h1>CODE JOURNAL</h1>
+      <nav>
+        <a class="entries-button">Entries</a>
+      </nav>
     </div>
   </header>
   <main>
-    <div class="container" data-view="entry-form">
+    <div class="container hidden" data-view="entry-form">
       <form id="form">
         <div class="row">
           <div class="column-full">
@@ -58,7 +61,7 @@
         </div>
       </form>
     </div>
-    <div class="container" data-view="entries">
+    <div class="container" data-view="entries" id="entries">
       <div class="row entries">
         <div class="column">
           <h2>Entries</h2>
