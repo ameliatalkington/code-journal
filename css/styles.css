@@ -1,0 +1,65 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+  font-size: 22px;
+}
+
+header {
+  background-color: lightskyblue;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.displayed-image {
+  border: solid black 7px;
+}
+
+h2 {
+  color: rgb(81, 81, 81);
+}
+
+label {
+  font-size: 16px;
+  display: flex;
+  margin-bottom: 5px;
+  color: rgb(81, 81, 81);
+}
+
+input,
+textarea,
+img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  padding-left: 0.5rem;
+  border: solid rgba(98, 98, 98, 0.827) 1px;
+  border-radius: 3px;
+  background-color: rgba(211, 211, 211, 0.204);
+  font-size: 15px;
+}
+
+input {
+  height: 40px;
+}
+
+textarea {
+  height: 100px;
+  padding-top: 5px;
+}
+
+#submit {
+  padding: 0;
+  color: black;
+  width: 80px;
+  height: 35px;
+  background-color: lightskyblue;
+  border: none;
+  float: right;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 17px;
+}
