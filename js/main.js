@@ -16,7 +16,7 @@ $form.addEventListener('submit', function (event) {
     imageUrl: $displayedImage.getAttribute('src'),
     title: $title.value,
     notes: $notes.value,
-    EntryId: data.nextEntryId
+    entryId: data.nextEntryId
   };
   data.entries.unshift(newObject);
   data.nextEntryId++;
