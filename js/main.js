@@ -23,8 +23,23 @@ $form.addEventListener('submit', function (event) {
     notes: $notes.value,
     entryId: data.nextEntryId
   };
+  if (data.editing === null) {
+    data.entries.unshift(newObject);
+    data.nextEntryId++;
+    $h2.textContent = 'New Entry';
+    return;
+  }
+  for (var k = 0; k < data.entries.length; k++) {
+    if (data.entries[k].entryId === data.editing.entryId) {
+      data.entries[k] = newObject;
+      $h2.textContent = 'New Entry';
+      $form.reset();
+      return;
+    }
+  }
   data.entries.unshift(newObject);
   data.nextEntryId++;
+  $h2.textContent = 'New Entry';
   $form.reset();
 });
 
@@ -40,7 +55,11 @@ $entriesButton.addEventListener('click', function (event) {
 
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
-    $entries.appendChild(newEntry(data.entries[i]));
+    if (data.editing === null) {
+      $entries.appendChild(newEntry(data.entries[i]));
+    } else if (!(data.entries[i].entryId === data.editing.entryId)) {
+      $entries.appendChild(newEntry(data.entries[i]));
+    }
   }
 });
 
