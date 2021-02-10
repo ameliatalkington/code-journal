@@ -14,9 +14,26 @@
   flex-wrap: wrap;
 }
 
+.column {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
 .column-full,
 .column-half {
   width: 100%;
+}
+
+ul {
+  padding: 0;
+  padding-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  border-bottom: solid black 1px;
 }
 
 @media screen and (min-width: 768px) {
@@ -29,6 +46,7 @@
     padding-left: 2.2rem;
   }
 
+  .column,
   .column-full,
   .column-half {
     padding: 0 0.75rem;

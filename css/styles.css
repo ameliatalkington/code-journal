@@ -1,7 +1,7 @@
 * {
   font-family: 'Montserrat', sans-serif;
   color: black;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 header {
@@ -11,19 +11,42 @@ header {
   font-family: 'Open Sans', sans-serif;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+}
+
+a {
+  padding-left: 1rem;
+  color: rgb(81, 81, 81);
+  text-decoration: none;
+}
+
 .displayed-image {
   border: solid black 7px;
 }
 
-h2 {
+h2,
+p,
+label {
   color: rgb(81, 81, 81);
+}
+
+h3 {
+  text-transform: uppercase;
+  margin-top: 0;
+  font-size: 19px;
+  color: lightskyblue;
+}
+
+p {
+  font-size: 15px;
 }
 
 label {
   font-size: 16px;
   display: flex;
   margin-bottom: 5px;
-  color: rgb(81, 81, 81);
 }
 
 input,
@@ -51,7 +74,8 @@ textarea {
   padding-top: 5px;
 }
 
-#submit {
+#submit,
+.new-button {
   padding: 0;
   color: black;
   width: 80px;
@@ -62,4 +86,9 @@ textarea {
   font-weight: 700;
   letter-spacing: 0.5px;
   font-size: 17px;
+  border-radius: 6px;
+}
+
+.new-button {
+  float: none;
 }
