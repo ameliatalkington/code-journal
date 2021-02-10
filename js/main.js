@@ -70,6 +70,12 @@ function newEntry(entry) {
 
 $entries.addEventListener('click', function (event) {
   if (event.target.className === 'far fa-edit') {
+    var $editNodes = $entries.querySelectorAll('.far.fa-edit');
+    for (var j = 0; j < $editNodes.length; j++) {
+      if (event.target === $editNodes[j]) {
+        data.editing = data.entries[j];
+      }
+    }
     $containerElements[0].className = 'container';
     $containerElements[1].className = 'container hidden';
   }
