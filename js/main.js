@@ -52,11 +52,17 @@ function newEntry(entry) {
   var $divColHalf2 = $divRow.appendChild(document.createElement('div'));
   $divColHalf2.setAttribute('class', 'column-half');
   var $imgTag = $divColHalf1.appendChild(document.createElement('img'));
-  var $h3 = $divColHalf2.appendChild(document.createElement('h3'));
+
+  var $h3EditDiv = $divColHalf2.appendChild(document.createElement('div'));
+  $h3EditDiv.setAttribute('class', 'h3-and-edit-div');
+  var $h3 = $h3EditDiv.appendChild(document.createElement('h3'));
+  var $editButton = $h3EditDiv.appendChild(document.createElement('i'));
+
   var $p = $divColHalf2.appendChild(document.createElement('p'));
 
   $imgTag.setAttribute('src', entry.imageUrl);
   $h3.textContent = entry.title;
+  $editButton.setAttribute('class', 'far fa-edit');
   $p.textContent = entry.notes;
 
   return ($ul);
