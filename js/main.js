@@ -9,6 +9,7 @@ var $entriesButton = document.querySelector('.entries-button');
 var $newButton = document.querySelector('.new-button');
 var $containerElements = document.querySelectorAll('.container');
 var $entries = document.querySelector('.row.entries');
+var $h2 = document.querySelector('h2');
 
 $photoURL.addEventListener('input', function (event) {
   $displayedImage.setAttribute('src', event.target.value);
@@ -78,6 +79,7 @@ $entries.addEventListener('click', function (event) {
     }
     $containerElements[0].className = 'container';
     $containerElements[1].className = 'container hidden';
+    $h2.textContent = 'Edit Entry';
     $photoURL.value = data.editing.imageUrl;
     $title.value = data.editing.title;
     $notes.value = data.editing.notes;
