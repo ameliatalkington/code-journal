@@ -67,3 +67,9 @@ function newEntry(entry) {
 
   return ($ul);
 }
+
+$entries.addEventListener('click', function (event) {
+  if (event.target.className === 'far fa-edit') {
+    console.log('yippee');
+  }
+});
