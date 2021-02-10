@@ -78,5 +78,9 @@ $entries.addEventListener('click', function (event) {
     }
     $containerElements[0].className = 'container';
     $containerElements[1].className = 'container hidden';
+    $photoURL.value = data.editing.imageUrl;
+    $title.value = data.editing.title;
+    $notes.value = data.editing.notes;
+    $displayedImage.setAttribute('src', data.editing.imageUrl);
   }
 });
