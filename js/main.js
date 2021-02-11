@@ -12,6 +12,7 @@ var $entries = document.querySelector('.row.entries');
 var $h2 = document.querySelector('h2');
 var $delete = document.querySelector('.delete');
 var $modal = document.querySelector('.confirmation-modal');
+var $cancelButton = document.querySelector('.cancel-button');
 
 $photoURL.addEventListener('input', function (event) {
   $displayedImage.setAttribute('src', event.target.value);
@@ -136,4 +137,10 @@ function editEntry(newData, DOMElement) {
 
 $delete.addEventListener('click', function (event) {
   $modal.className = 'confirmation-modal';
+});
+
+$cancelButton.addEventListener('click', function (event) {
+  $modal.className = 'confirmation-modal hidden';
+  $containerElements[0].className = 'container hidden';
+  $containerElements[1].className = 'container';
 });
