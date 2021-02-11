@@ -23,24 +23,23 @@ $form.addEventListener('submit', function (event) {
     notes: $notes.value,
     entryId: data.nextEntryId
   };
-  if (data.editing === null) {
-    data.entries.unshift(newObject);
-    data.nextEntryId++;
-    $h2.textContent = 'New Entry';
-    return;
-  }
-  for (var k = 0; k < data.entries.length; k++) {
-    if (data.entries[k].entryId === data.editing.entryId) {
-      data.entries[k] = newObject;
-      $h2.textContent = 'New Entry';
-      $form.reset();
-      return;
+  if (data.editing !== null) {
+    for (var k = 0; k < data.entries.length; k++) {
+      if (data.entries[k].entryId === data.editing.entryId) {
+        data.entries[k] = newObject;
+        $h2.textContent = 'New Entry';
+        resetForm();
+        data.editing = null;
+        return;
+      }
     }
   }
   data.entries.unshift(newObject);
+  var newEntryElement = newEntry(newObject);
+  $entries.prepend(newEntryElement);
   data.nextEntryId++;
   $h2.textContent = 'New Entry';
-  $form.reset();
+  resetForm();
 });
 
 $newButton.addEventListener('click', function (event) {
@@ -51,6 +50,8 @@ $newButton.addEventListener('click', function (event) {
 $entriesButton.addEventListener('click', function (event) {
   $containerElements[0].className = 'container hidden';
   $containerElements[1].className = 'container';
+  data.editing = null;
+  resetForm();
 });
 
 window.addEventListener('DOMContentLoaded', function (event) {
@@ -105,3 +106,8 @@ $entries.addEventListener('click', function (event) {
     $displayedImage.setAttribute('src', data.editing.imageUrl);
   }
 });
+
+function resetForm() {
+  $form.reset();
+  $displayedImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+}
