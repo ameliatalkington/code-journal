@@ -17,6 +17,7 @@ $photoURL.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
+  var newEntryElement = {};
   var newObject = {
     imageUrl: $displayedImage.getAttribute('src'),
     title: $title.value,
@@ -27,7 +28,8 @@ $form.addEventListener('submit', function (event) {
     for (var k = 0; k < data.entries.length; k++) {
       if (data.entries[k].entryId === data.editing.entryId) {
         data.entries[k] = newObject;
-        $h2.textContent = 'New Entry';
+        newEntryElement = newEntry(newObject);
+        $entries.prepend(newEntryElement);
         resetForm();
         data.editing = null;
         return;
@@ -35,10 +37,9 @@ $form.addEventListener('submit', function (event) {
     }
   }
   data.entries.unshift(newObject);
-  var newEntryElement = newEntry(newObject);
+  newEntryElement = newEntry(newObject);
   $entries.prepend(newEntryElement);
   data.nextEntryId++;
-  $h2.textContent = 'New Entry';
   resetForm();
 });
 
@@ -68,17 +69,20 @@ function newEntry(entry) {
   var $ul = document.createElement('ul');
   var $divRow = $ul.appendChild(document.createElement('div'));
   $divRow.setAttribute('class', 'row');
+
   var $divColHalf1 = $divRow.appendChild(document.createElement('div'));
   $divColHalf1.setAttribute('class', 'column-half');
+
   var $divColHalf2 = $divRow.appendChild(document.createElement('div'));
   $divColHalf2.setAttribute('class', 'column-half');
+
   var $imgTag = $divColHalf1.appendChild(document.createElement('img'));
 
   var $h3EditDiv = $divColHalf2.appendChild(document.createElement('div'));
   $h3EditDiv.setAttribute('class', 'h3-and-edit-div');
+
   var $h3 = $h3EditDiv.appendChild(document.createElement('h3'));
   var $editButton = $h3EditDiv.appendChild(document.createElement('i'));
-
   var $p = $divColHalf2.appendChild(document.createElement('p'));
 
   $imgTag.setAttribute('src', entry.imageUrl);
@@ -109,5 +113,6 @@ $entries.addEventListener('click', function (event) {
 
 function resetForm() {
   $form.reset();
+  $h2.textContent = 'New Entry';
   $displayedImage.setAttribute('src', 'images/placeholder-image-square.jpg');
 }
