@@ -47,14 +47,12 @@ $form.addEventListener('submit', function (event) {
 });
 
 $newButton.addEventListener('click', function (event) {
-  $containerElements[0].className = 'container';
-  $containerElements[1].className = 'container hidden';
-  $delete.className = 'delete hidden';
+  showNewEntry();
+  $delete.className = 'delete invisible';
 });
 
 $entriesButton.addEventListener('click', function (event) {
-  $containerElements[0].className = 'container hidden';
-  $containerElements[1].className = 'container';
+  showEntries();
   data.editing = null;
   resetForm();
 });
@@ -104,8 +102,7 @@ $entries.addEventListener('click', function (event) {
         data.editing = data.entries[j];
       }
     }
-    $containerElements[0].className = 'container';
-    $containerElements[1].className = 'container hidden';
+    showNewEntry();
     $h2.textContent = 'Edit Entry';
     $photoURL.value = data.editing.imageUrl;
     $title.value = data.editing.title;
@@ -176,4 +173,9 @@ function addModal() {
 function showEntries() {
   $containerElements[0].className = 'container hidden';
   $containerElements[1].className = 'container';
+}
+
+function showNewEntry() {
+  $containerElements[0].className = 'container';
+  $containerElements[1].className = 'container hidden';
 }
