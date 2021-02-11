@@ -27,11 +27,11 @@ $form.addEventListener('submit', function (event) {
   if (data.editing !== null) {
     for (var k = 0; k < data.entries.length; k++) {
       if (data.entries[k].entryId === data.editing.entryId) {
+        var $entriesNodes = $entries.children;
+        editEntry(newObject, $entriesNodes[k]);
         data.entries[k] = newObject;
-        newEntryElement = newEntry(newObject);
-        $entries.prepend(newEntryElement);
-        resetForm();
         data.editing = null;
+        resetForm();
         return;
       }
     }
@@ -57,11 +57,7 @@ $entriesButton.addEventListener('click', function (event) {
 
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
-    if (data.editing === null) {
-      $entries.appendChild(newEntry(data.entries[i]));
-    } else if (!(data.entries[i].entryId === data.editing.entryId)) {
-      $entries.appendChild(newEntry(data.entries[i]));
-    }
+    $entries.appendChild(newEntry(data.entries[i]));
   }
 });
 
@@ -87,15 +83,15 @@ function newEntry(entry) {
 
   $imgTag.setAttribute('src', entry.imageUrl);
   $h3.textContent = entry.title;
-  $editButton.setAttribute('class', 'far fa-edit');
+  $editButton.setAttribute('class', 'edit far fa-edit');
   $p.textContent = entry.notes;
 
   return ($ul);
 }
 
 $entries.addEventListener('click', function (event) {
-  if (event.target.className === 'far fa-edit') {
-    var $editNodes = $entries.querySelectorAll('.far.fa-edit');
+  if (event.target.className === 'edit far fa-edit') {
+    var $editNodes = $entries.querySelectorAll('.edit.far.fa-edit');
     for (var j = 0; j < $editNodes.length; j++) {
       if (event.target === $editNodes[j]) {
         data.editing = data.entries[j];
@@ -115,4 +111,18 @@ function resetForm() {
   $form.reset();
   $h2.textContent = 'New Entry';
   $displayedImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+}
+
+function editEntry(newData, DOMElement) {
+  var $row = DOMElement.firstChild;
+  var $columnHalf1 = $row.firstChild;
+  var $editImg = $columnHalf1.firstChild;
+  $editImg.setAttribute('src', newData.imageUrl);
+
+  var $columnHalf2 = $row.lastChild;
+  var $titleAndIcon = $columnHalf2.firstChild;
+  var $editTitle = $titleAndIcon.firstChild;
+  var $editNotes = $columnHalf2.lastChild;
+  $editTitle.textContent = newData.title;
+  $editNotes.textContent = newData.notes;
 }
