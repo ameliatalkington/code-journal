@@ -10,6 +10,7 @@ var $newButton = document.querySelector('.new-button');
 var $containerElements = document.querySelectorAll('.container');
 var $entries = document.querySelector('.row.entries');
 var $h2 = document.querySelector('h2');
+var $delete = document.querySelector('.delete');
 
 $photoURL.addEventListener('input', function (event) {
   $displayedImage.setAttribute('src', event.target.value);
@@ -46,6 +47,7 @@ $form.addEventListener('submit', function (event) {
 $newButton.addEventListener('click', function (event) {
   $containerElements[0].className = 'container';
   $containerElements[1].className = 'container hidden';
+  $delete.className = 'delete hidden';
 });
 
 $entriesButton.addEventListener('click', function (event) {
@@ -76,6 +78,8 @@ function newEntry(entry) {
 
   var $h3EditDiv = $divColHalf2.appendChild(document.createElement('div'));
   $h3EditDiv.setAttribute('class', 'h3-and-edit-div');
+  var $pAndDeleteDiv = $divColHalf2.appendChild(document.createElement('div'));
+  $pAndDeleteDiv.setAttribute('class', 'delete-and-p-div');
 
   var $h3 = $h3EditDiv.appendChild(document.createElement('h3'));
   var $editButton = $h3EditDiv.appendChild(document.createElement('i'));
@@ -91,6 +95,7 @@ function newEntry(entry) {
 
 $entries.addEventListener('click', function (event) {
   if (event.target.className === 'edit far fa-edit') {
+    $delete.className = 'delete';
     var $editNodes = $entries.querySelectorAll('.edit.far.fa-edit');
     for (var j = 0; j < $editNodes.length; j++) {
       if (event.target === $editNodes[j]) {
