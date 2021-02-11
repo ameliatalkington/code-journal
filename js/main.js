@@ -153,4 +153,14 @@ function addModal() {
   $cancelButton.addEventListener('click', function (event) {
     $confirmationModal.className = 'confirmation-modal hidden';
   });
+
+  $deleteButton.addEventListener('click', function (event) {
+    $confirmationModal.className = 'confirmation-modal hidden';
+    var entryNumber = data.entries.entryId - 1;
+    data.entries.splice(entryNumber, 1);
+    data.nextEntryId--;
+    data.entries.entryId--;
+    $containerElements[0].className = 'container hidden';
+    $containerElements[1].className = 'container';
+  });
 }
