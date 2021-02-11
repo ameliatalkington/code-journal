@@ -11,6 +11,7 @@ var $containerElements = document.querySelectorAll('.container');
 var $entries = document.querySelector('.row.entries');
 var $h2 = document.querySelector('h2');
 var $delete = document.querySelector('.delete');
+var $modal = document.querySelector('.confirmation-modal');
 
 $photoURL.addEventListener('input', function (event) {
   $displayedImage.setAttribute('src', event.target.value);
@@ -48,6 +49,7 @@ $newButton.addEventListener('click', function (event) {
   $containerElements[0].className = 'container';
   $containerElements[1].className = 'container hidden';
   $delete.className = 'delete hidden';
+  $modal.className = 'confirmation-modal hidden';
 });
 
 $entriesButton.addEventListener('click', function (event) {
@@ -131,3 +133,7 @@ function editEntry(newData, DOMElement) {
   $editTitle.textContent = newData.title;
   $editNotes.textContent = newData.notes;
 }
+
+$delete.addEventListener('click', function (event) {
+  $modal.className = 'confirmation-modal';
+});

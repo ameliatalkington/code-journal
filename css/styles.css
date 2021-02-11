@@ -75,7 +75,9 @@ textarea {
 }
 
 #submit,
-.new-button {
+.new-button,
+.delete-button,
+.cancel-button {
   padding: 0;
   color: black;
   width: 80px;
@@ -89,6 +91,12 @@ textarea {
   border-radius: 6px;
 }
 
+.delete-button,
+.cancel-button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .new-button {
   float: none;
 }
@@ -100,4 +108,29 @@ textarea {
 
 .delete {
   padding-bottom: 1rem;
+}
+
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.341);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 90%;
+  height: 30%;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 4px;
 }

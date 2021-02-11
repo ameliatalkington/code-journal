@@ -62,4 +62,8 @@ ul {
   .column-half {
     width: 50%;
   }
+
+  .modal {
+    max-width: 45%;
+  }
 }
