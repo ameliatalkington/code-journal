@@ -11,8 +11,6 @@ var $containerElements = document.querySelectorAll('.container');
 var $entries = document.querySelector('.row.entries');
 var $h2 = document.querySelector('h2');
 var $delete = document.querySelector('.delete');
-var $modal = document.querySelector('.confirmation-modal');
-var $cancelButton = document.querySelector('.cancel-button');
 
 $photoURL.addEventListener('input', function (event) {
   $displayedImage.setAttribute('src', event.target.value);
@@ -50,7 +48,6 @@ $newButton.addEventListener('click', function (event) {
   $containerElements[0].className = 'container';
   $containerElements[1].className = 'container hidden';
   $delete.className = 'delete hidden';
-  $modal.className = 'confirmation-modal hidden';
 });
 
 $entriesButton.addEventListener('click', function (event) {
@@ -136,11 +133,24 @@ function editEntry(newData, DOMElement) {
 }
 
 $delete.addEventListener('click', function (event) {
-  $modal.className = 'confirmation-modal';
+  addModal();
 });
 
-$cancelButton.addEventListener('click', function (event) {
-  $modal.className = 'confirmation-modal hidden';
-  $containerElements[0].className = 'container hidden';
-  $containerElements[1].className = 'container';
-});
+function addModal() {
+  var $confirmationModal = $containerElements[0].appendChild(document.createElement('div'));
+  $confirmationModal.setAttribute('class', 'confirmation-modal');
+  var $modal = $confirmationModal.appendChild(document.createElement('div'));
+  $modal.setAttribute('class', 'modal');
+  var $modalText = $modal.appendChild(document.createElement('h3'));
+  $modalText.textContent = 'Are you sure you want to delete this entry?';
+  var $cancelButton = $modal.appendChild(document.createElement('button'));
+  $cancelButton.setAttribute('class', 'cancel-button');
+  $cancelButton.textContent = 'cancel';
+  var $deleteButton = $modal.appendChild(document.createElement('button'));
+  $deleteButton.setAttribute('class', 'delete-button');
+  $deleteButton.textContent = 'delete';
+
+  $cancelButton.addEventListener('click', function (event) {
+    $confirmationModal.className = 'confirmation-modal hidden';
+  });
+}
