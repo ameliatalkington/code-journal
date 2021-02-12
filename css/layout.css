@@ -2,10 +2,6 @@
   display: none !important;
 }
 
-.invisible {
-  visibility: hidden;
-}
-
 .title,
 .container {
   max-width: 575px;
@@ -21,8 +17,8 @@
 .column {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
 }

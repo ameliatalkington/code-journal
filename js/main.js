@@ -51,7 +51,7 @@ $form.addEventListener('submit', function (event) {
 
 $newButton.addEventListener('click', function (event) {
   showNewEntry();
-  $delete.className = 'delete invisible';
+  $delete.className = 'delete hidden';
 });
 
 $entriesButton.addEventListener('click', function (event) {
@@ -121,6 +121,7 @@ function resetForm() {
 }
 
 function editEntry(newData, DOMElement) {
+
   var $row = DOMElement.firstChild;
   var $columnHalf1 = $row.firstChild;
   var $editImg = $columnHalf1.firstChild;
@@ -132,6 +133,16 @@ function editEntry(newData, DOMElement) {
   var $editNotes = $columnHalf2.lastChild;
   $editTitle.textContent = newData.title;
   $editNotes.textContent = newData.notes;
+}
+
+function showEntries() {
+  $containerElements[0].className = 'container hidden';
+  $containerElements[1].className = 'container';
+}
+
+function showNewEntry() {
+  $containerElements[0].className = 'container';
+  $containerElements[1].className = 'container hidden';
 }
 
 $delete.addEventListener('click', function (event) {
@@ -157,13 +168,3 @@ $deleteButton.addEventListener('click', function (event) {
   }
   showEntries();
 });
-
-function showEntries() {
-  $containerElements[0].className = 'container hidden';
-  $containerElements[1].className = 'container';
-}
-
-function showNewEntry() {
-  $containerElements[0].className = 'container';
-  $containerElements[1].className = 'container hidden';
-}
