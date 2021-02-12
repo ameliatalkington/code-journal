@@ -90,6 +90,10 @@ textarea {
   border-radius: 6px;
 }
 
+#submit {
+  justify-self: flex-end;
+}
+
 .delete-button,
 .cancel-button {
   text-transform: uppercase;

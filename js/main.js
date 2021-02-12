@@ -11,6 +11,9 @@ var $containerElements = document.querySelectorAll('.container');
 var $entries = document.querySelector('.row.entries');
 var $h2 = document.querySelector('h2');
 var $delete = document.querySelector('.delete');
+var $confirmationModal = document.querySelector('.confirmation-modal');
+var $deleteButton = document.querySelector('.delete-button');
+var $cancelButton = document.querySelector('.cancel-button');
 
 $photoURL.addEventListener('input', function (event) {
   $displayedImage.setAttribute('src', event.target.value);
@@ -132,43 +135,28 @@ function editEntry(newData, DOMElement) {
 }
 
 $delete.addEventListener('click', function (event) {
-  addModal();
+  $confirmationModal.className = 'confirmation-modal';
 });
 
-function addModal() {
-  var $confirmationModal = $containerElements[0].appendChild(document.createElement('div'));
-  $confirmationModal.setAttribute('class', 'confirmation-modal');
-  var $modal = $confirmationModal.appendChild(document.createElement('div'));
-  $modal.setAttribute('class', 'modal');
-  var $modalText = $modal.appendChild(document.createElement('h3'));
-  $modalText.textContent = 'Are you sure you want to delete this entry?';
-  var $cancelButton = $modal.appendChild(document.createElement('button'));
-  $cancelButton.setAttribute('class', 'cancel-button');
-  $cancelButton.textContent = 'cancel';
-  var $deleteButton = $modal.appendChild(document.createElement('button'));
-  $deleteButton.setAttribute('class', 'delete-button');
-  $deleteButton.textContent = 'delete';
+$cancelButton.addEventListener('click', function (event) {
+  $confirmationModal.className = 'confirmation-modal hidden';
+});
 
-  $cancelButton.addEventListener('click', function (event) {
-    $confirmationModal.className = 'confirmation-modal hidden';
-  });
-
-  $deleteButton.addEventListener('click', function (event) {
-    $confirmationModal.className = 'confirmation-modal hidden';
-    var editedEntryID = data.editing.entryId;
-    var entryElements = $entries.querySelectorAll('ul');
-    for (var n = 0; n < data.entries.length; n++) {
-      if (editedEntryID === data.entries[n].entryId) {
-        data.entries.splice(n, 1);
-        data.nextEntryId--;
-        data.entries.entryId--;
-        entryElements[n].remove();
-        resetForm();
-      }
+$deleteButton.addEventListener('click', function (event) {
+  $confirmationModal.className = 'confirmation-modal hidden';
+  var editedEntryID = data.editing.entryId;
+  var entryElements = $entries.querySelectorAll('ul');
+  for (var n = 0; n < data.entries.length; n++) {
+    if (editedEntryID === data.entries[n].entryId) {
+      data.entries.splice(n, 1);
+      data.nextEntryId--;
+      data.entries.entryId--;
+      entryElements[n].remove();
+      resetForm();
     }
-    showEntries();
-  });
-}
+  }
+  showEntries();
+});
 
 function showEntries() {
   $containerElements[0].className = 'container hidden';
