@@ -10,6 +10,10 @@ var $newButton = document.querySelector('.new-button');
 var $containerElements = document.querySelectorAll('.container');
 var $entries = document.querySelector('.row.entries');
 var $h2 = document.querySelector('h2');
+var $delete = document.querySelector('.delete');
+var $confirmationModal = document.querySelector('.confirmation-modal');
+var $deleteButton = document.querySelector('.delete-button');
+var $cancelButton = document.querySelector('.cancel-button');
 
 $photoURL.addEventListener('input', function (event) {
   $displayedImage.setAttribute('src', event.target.value);
@@ -17,6 +21,7 @@ $photoURL.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
+  var $entriesNodes = $entries.children;
   var newEntryElement = {};
   var newObject = {
     imageUrl: $displayedImage.getAttribute('src'),
@@ -27,11 +32,11 @@ $form.addEventListener('submit', function (event) {
   if (data.editing !== null) {
     for (var k = 0; k < data.entries.length; k++) {
       if (data.entries[k].entryId === data.editing.entryId) {
-        var $entriesNodes = $entries.children;
         editEntry(newObject, $entriesNodes[k]);
         data.entries[k] = newObject;
         data.editing = null;
         resetForm();
+        showEntries();
         return;
       }
     }
@@ -41,16 +46,16 @@ $form.addEventListener('submit', function (event) {
   $entries.prepend(newEntryElement);
   data.nextEntryId++;
   resetForm();
+  showEntries();
 });
 
 $newButton.addEventListener('click', function (event) {
-  $containerElements[0].className = 'container';
-  $containerElements[1].className = 'container hidden';
+  showNewEntry();
+  $delete.className = 'delete hidden';
 });
 
 $entriesButton.addEventListener('click', function (event) {
-  $containerElements[0].className = 'container hidden';
-  $containerElements[1].className = 'container';
+  showEntries();
   data.editing = null;
   resetForm();
 });
@@ -76,6 +81,8 @@ function newEntry(entry) {
 
   var $h3EditDiv = $divColHalf2.appendChild(document.createElement('div'));
   $h3EditDiv.setAttribute('class', 'h3-and-edit-div');
+  var $pAndDeleteDiv = $divColHalf2.appendChild(document.createElement('div'));
+  $pAndDeleteDiv.setAttribute('class', 'delete-and-p-div');
 
   var $h3 = $h3EditDiv.appendChild(document.createElement('h3'));
   var $editButton = $h3EditDiv.appendChild(document.createElement('i'));
@@ -91,14 +98,14 @@ function newEntry(entry) {
 
 $entries.addEventListener('click', function (event) {
   if (event.target.className === 'edit far fa-edit') {
+    $delete.className = 'delete';
     var $editNodes = $entries.querySelectorAll('.edit.far.fa-edit');
     for (var j = 0; j < $editNodes.length; j++) {
       if (event.target === $editNodes[j]) {
         data.editing = data.entries[j];
       }
     }
-    $containerElements[0].className = 'container';
-    $containerElements[1].className = 'container hidden';
+    showNewEntry();
     $h2.textContent = 'Edit Entry';
     $photoURL.value = data.editing.imageUrl;
     $title.value = data.editing.title;
@@ -114,6 +121,7 @@ function resetForm() {
 }
 
 function editEntry(newData, DOMElement) {
+
   var $row = DOMElement.firstChild;
   var $columnHalf1 = $row.firstChild;
   var $editImg = $columnHalf1.firstChild;
@@ -126,3 +134,37 @@ function editEntry(newData, DOMElement) {
   $editTitle.textContent = newData.title;
   $editNotes.textContent = newData.notes;
 }
+
+function showEntries() {
+  $containerElements[0].className = 'container hidden';
+  $containerElements[1].className = 'container';
+}
+
+function showNewEntry() {
+  $containerElements[0].className = 'container';
+  $containerElements[1].className = 'container hidden';
+}
+
+$delete.addEventListener('click', function (event) {
+  $confirmationModal.className = 'confirmation-modal';
+});
+
+$cancelButton.addEventListener('click', function (event) {
+  $confirmationModal.className = 'confirmation-modal hidden';
+});
+
+$deleteButton.addEventListener('click', function (event) {
+  $confirmationModal.className = 'confirmation-modal hidden';
+  var editedEntryID = data.editing.entryId;
+  var entryElements = $entries.querySelectorAll('ul');
+  for (var n = 0; n < data.entries.length; n++) {
+    if (editedEntryID === data.entries[n].entryId) {
+      data.entries.splice(n, 1);
+      data.nextEntryId--;
+      data.entries.entryId--;
+      entryElements[n].remove();
+      resetForm();
+    }
+  }
+  showEntries();
+});

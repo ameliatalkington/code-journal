@@ -75,25 +75,68 @@ textarea {
 }
 
 #submit,
-.new-button {
+.new-button,
+.delete-button,
+.cancel-button {
   padding: 0;
   color: black;
   width: 80px;
   height: 35px;
   background-color: lightskyblue;
   border: none;
-  float: right;
   font-weight: 700;
   letter-spacing: 0.5px;
   font-size: 17px;
   border-radius: 6px;
 }
 
-.new-button {
-  float: none;
+#submit {
+  margin-left: auto;
+}
+
+.delete-button,
+.cancel-button {
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .edit {
   margin-bottom: 1rem;
   color: rgb(81, 81, 81);
+}
+
+.delete {
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.663);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 90%;
+  height: 30%;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.modal > h3 {
+  color: black;
 }

@@ -17,59 +17,67 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="title">
-      <h1>CODE JOURNAL</h1>
-      <nav>
-        <a class="entries-button">Entries</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <div class="container hidden" data-view="entry-form">
-      <form id="form">
-        <div class="row">
-          <div class="column-full">
-            <h2>New Entry</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column-half">
-            <img class="displayed-image" src="images/placeholder-image-square.jpg" alt="placeholder-image-square">
-          </div>
-          <div class="column-half">
-            <div class="label">
-              <label for="image-url">Image URL</label>
-              <input type="url" name="image-url" id="image-url" required="required" placeholder="Enter Image URL">
-            </div>
-            <div class="label">
-              <label for="title">Title</label>
-              <input type="text" name="title" id="title" required="required" placeholder="Enter Title">
+    <header>
+      <div class="title">
+        <h1>CODE JOURNAL</h1>
+        <nav>
+          <a class="entries-button">Entries</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="container hidden" data-view="entry-form">
+        <form id="form">
+          <div class="row">
+            <div class="column-full">
+              <h2>New Entry</h2>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="column-full label">
-            <label for="notes">Notes</label>
-            <textarea name="notes" id="notes" cols="30" rows="10" required="required"></textarea>
+          <div class="row">
+            <div class="column-half">
+              <img class="displayed-image" src="images/placeholder-image-square.jpg" alt="placeholder-image-square">
+            </div>
+            <div class="column-half">
+              <div class="label">
+                <label for="image-url">Image URL</label>
+                <input type="url" name="image-url" id="image-url" required="required" placeholder="Enter Image URL">
+              </div>
+              <div class="label">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" required="required" placeholder="Enter Title">
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="column-full">
-            <input id="submit" type="submit" value="SAVE">
+          <div class="row">
+            <div class="column-full label">
+              <label for="notes">Notes</label>
+              <textarea name="notes" id="notes" cols="30" rows="10" required="required"></textarea>
+            </div>
           </div>
+          <div class="row">
+            <div class="column">
+              <p class="delete">delete</p>
+              <input id="submit" type="submit" value="SAVE">
+            </div>
+          </div>
+        </form>
+        <div class="confirmation-modal hidden">
+            <div class="modal">
+              <h3>Are you sure you want to delete this entry?</h3>
+              <button class="cancel-button">cancel</button>
+              <button class="delete-button">delete</button>
+            </div>
+          </div>
+      </div>
+      <div class="container" data-view="entries" id="entries">
+        <div class="column">
+          <h2>Entries</h2>
+          <button class="new-button">NEW</button>
         </div>
-      </form>
-    </div>
-    <div class="container" data-view="entries" id="entries">
-      <div class="column">
-        <h2>Entries</h2>
-        <button class="new-button">NEW</button>
+        <div class="row entries">
+        </div>
       </div>
-      <div class="row entries">
-      </div>
-    </div>
-  </main>
+    </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
